@@ -46,6 +46,12 @@ class MainActivity : AppCompatActivity() {
             recyclerView.layoutManager = GridLayoutManager( this, 3 )
             recyclerView.adapter = adapter
         }
+
+        navigationView.setNavigationItemSelectedListener {
+            val id = it.itemId
+            viewModel.navigationLogic( id )
+            true
+        }
     }
 
 

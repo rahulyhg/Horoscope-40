@@ -7,4 +7,8 @@ interface MainService {
     fun generateNames() : List<String>
     fun generateImages() : List<Int>
     fun generateModel() : Observable<List<MainViewZodiacModel>>
+    fun sendEmail()
+    fun sendFeedback()
+    fun goToAbout()
+    fun goToSetDefault()
 }

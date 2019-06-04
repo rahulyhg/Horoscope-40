@@ -1,12 +1,62 @@
 package com.kar.horoscope.repository
 
+import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
+import android.widget.Toast
 import com.kar.horoscope.R
 import com.kar.horoscope.models.MainViewZodiacModel
 import com.kar.horoscope.service.MainService
+import com.kar.horoscope.view.activities.About
+import com.kar.horoscope.view.activities.SetUserZodiac
 import io.reactivex.Observable
 
+
 class MainRepository(private val context: Context) : MainService {
+
+    override fun goToSetDefault() {
+        context.startActivity( Intent( context, SetUserZodiac::class.java ) )
+        ( context as Activity ).finish()
+    }
+
+    override fun goToAbout() {
+        context.startActivity( Intent( context, About::class.java ) )
+        ( context as Activity ).finish()
+    }
+
+    override fun sendEmail() {
+        val uri = Uri.parse("mailto:karenmirakyan@gmail.com")
+
+        val emailIntent = Intent(Intent.ACTION_SENDTO, uri)
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject")
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here")
+
+        try {
+            context.startActivity(Intent.createChooser(emailIntent, "Send mail..."))
+            Log.i("Finished sending", "")
+        } catch (ex: ActivityNotFoundException) {
+            Toast.makeText(
+                context,
+                "There is no email client installed.", Toast.LENGTH_SHORT
+            ).show()
+        }
+
+    }
+
+    override fun sendFeedback() {
+        val uri = Uri.parse("market://details?id=" + context.packageName)
+        val myAppLinkToMarket = Intent(Intent.ACTION_VIEW, uri)
+        try {
+            context.startActivity( myAppLinkToMarket )
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText( context, " unable to find market app", Toast.LENGTH_LONG).show()
+        }
+
+    }
+
 
     override fun generateNames(): List<String> {
         return context.resources.getStringArray(R.array.Zodiacs).toList()
