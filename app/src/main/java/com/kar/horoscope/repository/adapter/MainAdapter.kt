@@ -1,5 +1,6 @@
 package com.kar.horoscope.repository.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -11,7 +12,6 @@ import com.kar.horoscope.R
 import com.kar.horoscope.models.MainViewZodiacModel
 import com.kar.horoscope.view.activities.Forecast
 import kotlinx.android.synthetic.main.single_zodiac.view.*
-import android.app.Activity
 
 
 
@@ -33,6 +33,7 @@ class MainAdapter(
 
         holder.card.setOnClickListener {
             val intent = Intent ( context, Forecast::class.java)
+            intent.putExtra ( "Title", i )
             context.startActivity( intent )
             (context as Activity).finish()
 

@@ -13,8 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity
-            android:name=".view.activities.MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,6 +31,10 @@
 
         <activity
             android:name=".view.activities.Forecast"/>
+
+        <activity
+            android:name=".view.activities.MainActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 

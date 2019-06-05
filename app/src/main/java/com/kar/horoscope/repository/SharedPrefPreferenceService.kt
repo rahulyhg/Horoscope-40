@@ -5,11 +5,9 @@ import com.kar.horoscope.models.Preference
 import com.kar.horoscope.service.PreferenceService
 
 
-
 class SharedPrefPreferenceService( private val storage : SharedPreferences ) : PreferenceService {
 
-    override fun savePreference(preference: Preference) {
-
+    override fun savePreference(preference: Preference)  {
         val editor= storage.edit()
         editor.putInt( preference.tag, preference.preference )
         editor.apply()
