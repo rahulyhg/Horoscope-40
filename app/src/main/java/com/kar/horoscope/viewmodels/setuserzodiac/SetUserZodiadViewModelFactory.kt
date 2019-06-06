@@ -1,4 +1,4 @@
-package com.kar.horoscope.viewmodels
+package com.kar.horoscope.viewmodels.setuserzodiac
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
@@ -8,7 +8,9 @@ class SetUserZodiacViewModelFactory(private val preferenceService: PreferenceSer
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SetUserZodiacViewModel::class.java)) {
-            return SetUserZodiacViewModel( preferenceService ) as T
+            return SetUserZodiacViewModel(
+                preferenceService
+            ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

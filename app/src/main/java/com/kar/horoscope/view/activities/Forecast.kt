@@ -2,8 +2,11 @@ package com.kar.horoscope.view.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
 import com.kar.horoscope.R
+import com.kar.horoscope.repository.fragmentadapter.MainPagerAdapter
+import kotlinx.android.synthetic.main.activity_forecast.*
 
 class Forecast : AppCompatActivity() {
 
@@ -16,6 +19,13 @@ class Forecast : AppCompatActivity() {
         val list = resources.getStringArray(R.array.Zodiacs).toList()
         title = list[id]
 
+
+        val myPagerAdapter = MainPagerAdapter ( supportFragmentManager, applicationContext )
+        viewPager.adapter = myPagerAdapter
+        viewPager.setCurrentItem(1, true )
+
+        tabLayout.setupWithViewPager( viewPager )
+        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
     }
 
     override fun onBackPressed() {
@@ -23,5 +33,4 @@ class Forecast : AppCompatActivity() {
         startActivity(Intent( this, MainActivity::class.java))
         finish()
     }
-
 }

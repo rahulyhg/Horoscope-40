@@ -1,4 +1,4 @@
-package com.kar.horoscope.viewmodels
+package com.kar.horoscope.viewmodels.setuserzodiac
 
 import android.arch.lifecycle.ViewModel
 import com.kar.horoscope.models.Preference

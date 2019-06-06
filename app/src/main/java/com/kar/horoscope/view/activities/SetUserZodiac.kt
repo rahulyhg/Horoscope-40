@@ -15,8 +15,8 @@ import com.kar.horoscope.R
 import com.kar.horoscope.models.Preference
 import com.kar.horoscope.repository.SharedPrefPreferenceService
 import com.kar.horoscope.util.ChangeDividerColor
-import com.kar.horoscope.viewmodels.SetUserZodiacViewModel
-import com.kar.horoscope.viewmodels.SetUserZodiacViewModelFactory
+import com.kar.horoscope.viewmodels.setuserzodiac.SetUserZodiacViewModel
+import com.kar.horoscope.viewmodels.setuserzodiac.SetUserZodiacViewModelFactory
 import kotlinx.android.synthetic.main.activity_set_user_zodiac.*
 
 class SetUserZodiac : AppCompatActivity() {
@@ -35,7 +35,12 @@ class SetUserZodiac : AppCompatActivity() {
         sharedPrefPreferenceService = SharedPrefPreferenceService(sharedPreferences)
 
         val vm : SetUserZodiacViewModel by lazy {
-            ViewModelProviders.of(this, SetUserZodiacViewModelFactory( sharedPrefPreferenceService )).get(SetUserZodiacViewModel::class.java)
+            ViewModelProviders.of(this,
+                SetUserZodiacViewModelFactory(
+                    sharedPrefPreferenceService
+                )
+            ).get(
+                SetUserZodiacViewModel::class.java)
         }
         viewModel = vm
 

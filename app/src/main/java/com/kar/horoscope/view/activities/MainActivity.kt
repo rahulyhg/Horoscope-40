@@ -13,8 +13,8 @@ import android.view.MenuItem
 import com.kar.horoscope.R
 import com.kar.horoscope.repository.MainRepository
 import com.kar.horoscope.repository.adapter.MainAdapter
-import com.kar.horoscope.viewmodels.MainViewModel
-import com.kar.horoscope.viewmodels.ViewModelFactory
+import com.kar.horoscope.viewmodels.main.MainViewModel
+import com.kar.horoscope.viewmodels.main.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -38,7 +38,9 @@ class MainActivity : AppCompatActivity() {
 
         val repository = MainRepository( this )
         val viewModel: MainViewModel by lazy {
-            ViewModelProviders.of(this, ViewModelFactory(repository)).get(MainViewModel::class.java)
+            ViewModelProviders.of(this,
+                ViewModelFactory(repository)
+            ).get(MainViewModel::class.java)
         }
 
         viewModel.getObservableListModel.subscribe{
