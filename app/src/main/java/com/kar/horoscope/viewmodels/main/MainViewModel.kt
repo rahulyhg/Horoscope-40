@@ -21,6 +21,7 @@ class MainViewModel(mainService: MainService ) : ViewModel() {
         if ( id == R.id.feedback )  service.sendFeedback()
         if ( id == R.id.about )     service.goToAbout()
         if ( id == R.id.favourite ) service.goToSetDefault()
+        if ( id == R.id.compatibility ) service.goToCompatibility()
     }
 
 }

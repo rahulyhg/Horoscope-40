@@ -11,11 +11,16 @@ import com.kar.horoscope.R
 import com.kar.horoscope.models.MainViewZodiacModel
 import com.kar.horoscope.service.MainService
 import com.kar.horoscope.view.activities.About
+import com.kar.horoscope.view.activities.Compatibility
 import com.kar.horoscope.view.activities.SetUserZodiac
 import io.reactivex.Observable
 
 
 class MainRepository(private val context: Context) : MainService {
+    override fun goToCompatibility() {
+        context.startActivity(Intent ( context, Compatibility::class.java ) )
+        ( context as Activity ).finish()
+    }
 
     override fun goToSetDefault() {
         context.startActivity( Intent( context, SetUserZodiac::class.java ) )

@@ -1,6 +1,6 @@
 package com.kar.horoscope.service
 
 interface CompatibilityService {
-    fun getImages()
-    fun getNames()
+    fun getImages() : Array<Int>
+    fun getNames() : Array<String>
 }

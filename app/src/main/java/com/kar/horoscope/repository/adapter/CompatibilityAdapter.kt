@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kar.horoscope.R
+import com.kar.horoscope.service.ItemClickedCallback
 import kotlinx.android.synthetic.main.name.view.*
 
 class CompatibilityAdapter
     ( private val images: Array<Int>,
-      private val names: Array<String>): RecyclerView.Adapter<CompatibilityAdapter.CompatibilityViewHolder>() {
+      private val names: Array<String>,
+      private val itemClickedCallback: ItemClickedCallback): RecyclerView.Adapter<CompatibilityAdapter.CompatibilityViewHolder>() {
 
     class CompatibilityViewHolder( val card: View) : RecyclerView.ViewHolder ( card )
 
@@ -27,8 +29,11 @@ class CompatibilityAdapter
         with(holder) {
             with ( card ) {
                 zodiacName.text = names[i]
-                ///item clicked callback
             }
+        }
+
+        holder.card.setOnClickListener {
+            itemClickedCallback.itemClicked ( names[i], images[i] )
         }
     }
 }

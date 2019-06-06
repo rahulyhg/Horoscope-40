@@ -11,4 +11,5 @@ interface MainService {
     fun sendFeedback()
     fun goToAbout()
     fun goToSetDefault()
+    fun goToCompatibility()
 }

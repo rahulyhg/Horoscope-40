@@ -6,12 +6,12 @@ import com.kar.horoscope.service.CompatibilityService
 import io.reactivex.Observable as Observable1
 
 class CompatibilityRepository( private val context: Context ) : CompatibilityService {
-    override fun getNames() {
-        val names = context.resources.getStringArray( R.array.Zodiacs )
+    override fun getNames() : Array<String>{
+        return context.resources.getStringArray( R.array.Zodiacs )
     }
 
-    override fun getImages() {
-        val images = arrayOf(
+    override fun getImages() : Array<Int>{
+        return arrayOf(
             R.drawable.logo_aries,
             R.drawable.logo_taurus,
             R.drawable.logo_gemini,
@@ -24,6 +24,7 @@ class CompatibilityRepository( private val context: Context ) : CompatibilitySer
             R.drawable.logo_capricorn,
             R.drawable.logo_aquarius,
             R.drawable.logo_pisces )
+
     }
 
 }

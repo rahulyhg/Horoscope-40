@@ -4,6 +4,7 @@ import com.kar.horoscope.models.DayModel
 import io.reactivex.Observable
 
 interface FirebaseService {
-    fun read()
-    fun getData() : Observable <DayModel>
+    fun getData( date: String, titleZodiac: String ) : Observable <DayModel>
+    fun pushDailyData( model : DayModel )
+    fun getDate() : String
 }
