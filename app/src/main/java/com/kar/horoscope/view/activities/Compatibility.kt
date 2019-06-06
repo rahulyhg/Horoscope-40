@@ -1,11 +1,13 @@
 package com.kar.horoscope.view.activities
 
 import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.widget.Toast
 import com.kar.horoscope.R
+import com.kar.horoscope.databinding.ActivityCompatibilityBinding
 import com.kar.horoscope.repository.CompatibilityRepository
 import com.kar.horoscope.repository.adapter.CompatibilityAdapter
 import com.kar.horoscope.service.ItemClickedCallback
@@ -16,10 +18,10 @@ import kotlinx.android.synthetic.main.activity_compatibility.*
 
 class Compatibility : AppCompatActivity(), ItemClickedCallback {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView( R.layout.activity_compatibility )
-
+        val binding : ActivityCompatibilityBinding = DataBindingUtil.setContentView(this, R.layout.activity_compatibility )
 
         val repository = CompatibilityRepository(this )
         val viewModel: CompatibilityViewModel by lazy {
@@ -27,6 +29,8 @@ class Compatibility : AppCompatActivity(), ItemClickedCallback {
                 CompatibilityVMFactory(repository)
             ).get(CompatibilityViewModel::class.java)
         }
+
+        binding.viewModel = viewModel
 
         recyclerView.addItemDecoration( SpacesItemDecoration( 100 ))
         recyclerView.layoutManager = GridLayoutManager( this, 2 )
