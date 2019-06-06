@@ -7,4 +7,5 @@ interface FirebaseService {
     fun getData( date: String, titleZodiac: String ) : Observable <DayModel>
     fun pushDailyData( model : DayModel )
     fun getDate() : String
+    fun getTitle() : String
 }

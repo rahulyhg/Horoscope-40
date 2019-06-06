@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.kar.horoscope.R
 import com.kar.horoscope.repository.FirebaseRepository
-import com.kar.horoscope.view.activities.Forecast
 import com.kar.horoscope.viewmodels.forecast.ForecastVMFactory
 import com.kar.horoscope.viewmodels.forecast.ForecastViewModel
 import kotlinx.android.synthetic.main.content.*
@@ -50,7 +49,7 @@ class PostFragment : Fragment() {
 
         ///create the view querying to firestore
         viewModel
-            .getFirebaseData(  Forecast().title.toString() )
+            .getFirebaseData()
             .subscribe {
                 forecastText.text = it.text
                 forecastText.setTextColor(Color.WHITE)

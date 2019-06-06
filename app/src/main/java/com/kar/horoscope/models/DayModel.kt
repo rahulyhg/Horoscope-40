@@ -1,3 +1,3 @@
 package com.kar.horoscope.models
 
-data class DayModel( val data: String, val text: String )
+class DayModel @JvmOverloads constructor(var date: String? = null, var text: String? = null)

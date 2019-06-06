@@ -9,9 +9,9 @@ import io.reactivex.schedulers.Schedulers
 
 class ForecastViewModel( private val firebaseService: FirebaseService) : ViewModel() {
 
-    fun getFirebaseData( titleZodiac: String ) : Observable<DayModel> {
+    fun getFirebaseData(): Observable<DayModel> {
         return firebaseService
-            .getData(firebaseService.getDate(), titleZodiac )
+            .getData(firebaseService.getDate(), firebaseService.getTitle() )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread() )
     }
