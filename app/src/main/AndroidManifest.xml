@@ -11,7 +11,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.activities.Compatibility"></activity>
         <activity android:name=".view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +18,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".view.activities.SetUserZodiac"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".view.activities.About"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.activities.Forecast" />
+
         <activity
             android:name=".view.activities.MainActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".view.activities.Forecast"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".view.activities.ShowCompatibility"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".view.activities.Compatibility"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

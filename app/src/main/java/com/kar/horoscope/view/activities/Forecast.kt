@@ -19,7 +19,6 @@ class Forecast : AppCompatActivity() {
         val list = resources.getStringArray(R.array.Zodiacs).toList()
         title = list[id]
 
-
         val myPagerAdapter = MainPagerAdapter ( supportFragmentManager, applicationContext )
         viewPager.adapter = myPagerAdapter
         viewPager.setCurrentItem(1, true )

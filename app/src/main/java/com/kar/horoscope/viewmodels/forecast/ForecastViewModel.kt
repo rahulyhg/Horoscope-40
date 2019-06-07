@@ -9,10 +9,26 @@ import io.reactivex.schedulers.Schedulers
 
 class ForecastViewModel( private val firebaseService: FirebaseService) : ViewModel() {
 
-    fun getFirebaseData(): Observable<DayModel> {
-        return firebaseService
-            .getData(firebaseService.getDate(), firebaseService.getTitle() )
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread() )
+    fun getFirebaseData(title: String, pageNumber: Int? ): Observable<DayModel> {
+        when (pageNumber) {
+            1 -> return firebaseService
+                .getData(firebaseService.getYesterday(), title, "date" )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+            2 -> return firebaseService
+                .getData(firebaseService.getToday(), title, "date" )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+            3 -> return firebaseService
+                .getData(firebaseService.getTomorrow(), title, "date" )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+            4 -> return firebaseService
+                .getData(firebaseService.getMonth(), title, "month" )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        }
+
+        return Observable.just(DayModel("00/00/00", "Download Failed" ))
     }
 }

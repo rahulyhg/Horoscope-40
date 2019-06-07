@@ -16,6 +16,8 @@ import kotlinx.android.synthetic.main.content.*
 
 class PostFragment : Fragment() {
 
+    lateinit var title: String
+    lateinit var date: String
     val repository = FirebaseRepository()
     val viewModel: ForecastViewModel by lazy {
         ViewModelProviders.of(this,
@@ -37,6 +39,7 @@ class PostFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View? {
+        title = activity?.title.toString()
         return inflater.inflate( R.layout.content, parent, false )
     }
 
@@ -47,9 +50,9 @@ class PostFragment : Fragment() {
         val arguments = arguments
         val pageNumber = arguments?.getInt( ARG_PAGE )
 
-        ///create the view querying to firestore
+
         viewModel
-            .getFirebaseData()
+            .getFirebaseData(title, pageNumber)
             .subscribe {
                 forecastText.text = it.text
                 forecastText.setTextColor(Color.WHITE)

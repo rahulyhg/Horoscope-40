@@ -1,5 +1,6 @@
 package com.kar.horoscope.repository
 
+import android.annotation.SuppressLint
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -7,19 +8,18 @@ import com.google.firebase.database.ValueEventListener
 import com.kar.horoscope.models.DayModel
 import com.kar.horoscope.service.FirebaseService
 import io.reactivex.Observable
+import java.text.SimpleDateFormat
 import java.util.*
 
+@Suppress("UNREACHABLE_CODE")
 class FirebaseRepository : FirebaseService {
 
     private val ref = FirebaseDatabase.getInstance().reference
 
+    override fun getData ( date: String, titleZodiac: String, path: String ): Observable<DayModel> {
 
-    override fun getData ( date: String, titleZodiac: String ): Observable<DayModel> {
-
-        println ( "The date is -> $date" )
         ref.keepSynced(true)
-        val query = ref.child(titleZodiac).orderByChild("date" ).equalTo( date )
-
+        val query = ref.child(titleZodiac).orderByChild(path ).equalTo( date )
 
         return Observable.create {
 
@@ -42,28 +42,44 @@ class FirebaseRepository : FirebaseService {
 
             })
         }
-
     }
 
     override fun pushDailyData(model: DayModel) {
     }
 
-    override fun getDate() : String {
+    @SuppressLint("SimpleDateFormat")
+    override fun getToday(): String {
         val calendar = Calendar.getInstance()
+        val dateformat = SimpleDateFormat ( "dd/MM/yyyy" )
 
-        val day = calendar.get ( Calendar.DAY_OF_MONTH )
-        val month = calendar.get ( Calendar.MONTH ) + 1
-        val year = calendar.get( Calendar.YEAR ).toString()
-
-        var today = day.toString()
-        var todayMonth = month.toString()
-
-        if( day < 10 )      today = "0$day"
-        if ( month < 10 )   todayMonth = "0$month"
-
-        return "$today/$todayMonth/$year"
+        return dateformat.format( calendar.time )
     }
 
-    override fun getTitle(): String = "Aries"
+    @SuppressLint("SimpleDateFormat")
+    override fun getYesterday(): String {
+        val calendar = Calendar.getInstance()
+        calendar.add ( Calendar.DATE, -1 )
+
+        val dateformat = SimpleDateFormat ( "dd/MM/yyyy" )
+
+        return dateformat.format( calendar.time )
+
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    override fun getTomorrow(): String {
+
+        val calendar = Calendar.getInstance()
+        calendar.add ( Calendar.DATE, +1 )
+
+        val dateformat = SimpleDateFormat ( "dd/MM/yyyy" )
+
+        return dateformat.format( calendar.time )
+    }
+
+    override fun getMonth(): String {
+        val calendar = Calendar.getInstance()
+        return ( calendar.get( Calendar.MONTH ) + 1 ).toString()
+    }
 
 }
