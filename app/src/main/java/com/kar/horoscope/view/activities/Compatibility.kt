@@ -124,4 +124,10 @@ class Compatibility : AppCompatActivity(), ItemClickedCallback {
             Glide.with(applicationContext).load(image).into(binding.female)
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent ( this, MainActivity::class.java))
+        finish()
+    }
 }

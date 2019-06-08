@@ -30,6 +30,7 @@
     <string name="Month">Month</string>
     <string name="Week">Week</string>
     <string name="Year">Year</string>
+    <string name="loading_text">Loading text</string>
 
     <string-array name="Zodiacs">
         <item>@string/Aries</item>

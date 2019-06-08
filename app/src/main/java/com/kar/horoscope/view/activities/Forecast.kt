@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v7.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.kar.horoscope.R
 import com.kar.horoscope.repository.fragmentadapter.MainPagerAdapter
 import kotlinx.android.synthetic.main.activity_forecast.*
@@ -18,6 +19,7 @@ class Forecast : AppCompatActivity() {
         val id = intent.getIntExtra( "Title", 0 )
         val list = resources.getStringArray(R.array.Zodiacs).toList()
         title = list[id]
+        setImage( title.toString() )
 
         val myPagerAdapter = MainPagerAdapter ( supportFragmentManager, applicationContext )
         viewPager.adapter = myPagerAdapter
@@ -27,9 +29,24 @@ class Forecast : AppCompatActivity() {
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
     }
 
+    private fun setImage(title: String?) {
+        if (title.equals("Aries")) Glide.with(applicationContext).load(R.drawable.aries).into(forecastImage)
+        if (title.equals("Taurus")) Glide.with(applicationContext).load(R.drawable.taurus).into(forecastImage)
+        if (title.equals("Gemini")) Glide.with(applicationContext).load(R.drawable.gemini).into(forecastImage)
+        if (title.equals("Cancer")) Glide.with(applicationContext).load(R.drawable.cancer).into(forecastImage)
+        if (title.equals("Leo")) Glide.with(applicationContext).load(R.drawable.leo).into(forecastImage)
+        if (title.equals("Virgo")) Glide.with(applicationContext).load(R.drawable.virgo).into(forecastImage)
+        if (title.equals("Libra")) Glide.with(applicationContext).load(R.drawable.libra).into(forecastImage)
+        if (title.equals("Scorpio")) Glide.with(applicationContext).load(R.drawable.scorpio).into(forecastImage)
+        if (title.equals("Sagittarius")) Glide.with(applicationContext).load(R.drawable.sagittarius).into(forecastImage)
+        if (title.equals("Capricorn")) Glide.with(applicationContext).load(R.drawable.capricorn).into(forecastImage)
+        if (title.equals("Aquarius")) Glide.with(applicationContext).load(R.drawable.aquarius).into(forecastImage)
+        if (title.equals("Pisces")) Glide.with(applicationContext).load(R.drawable.pisces).into(forecastImage)
+    }
+
     override fun onBackPressed() {
-        super.onBackPressed()
-        startActivity(Intent( this, MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
+        super.onBackPressed()
     }
 }

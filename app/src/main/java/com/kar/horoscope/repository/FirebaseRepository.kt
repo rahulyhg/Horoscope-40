@@ -81,5 +81,4 @@ class FirebaseRepository : FirebaseService {
         val calendar = Calendar.getInstance()
         return ( calendar.get( Calendar.MONTH ) + 1 ).toString()
     }
-
 }

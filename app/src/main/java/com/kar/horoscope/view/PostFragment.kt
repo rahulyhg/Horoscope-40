@@ -2,22 +2,20 @@ package com.kar.horoscope.view
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.codesgood.views.JustifiedTextView
 import com.kar.horoscope.R
 import com.kar.horoscope.repository.FirebaseRepository
 import com.kar.horoscope.viewmodels.forecast.ForecastVMFactory
 import com.kar.horoscope.viewmodels.forecast.ForecastViewModel
-import kotlinx.android.synthetic.main.content.*
 
 class PostFragment : Fragment() {
 
     lateinit var title: String
-    lateinit var date: String
     val repository = FirebaseRepository()
     val viewModel: ForecastViewModel by lazy {
         ViewModelProviders.of(this,
@@ -50,12 +48,12 @@ class PostFragment : Fragment() {
         val arguments = arguments
         val pageNumber = arguments?.getInt( ARG_PAGE )
 
+        val txt = view.findViewById<JustifiedTextView>(R.id.forecastText )
 
         viewModel
             .getFirebaseData(title, pageNumber)
             .subscribe {
-                forecastText.text = it.text
-                forecastText.setTextColor(Color.WHITE)
+                txt.text = it.text
             }
     }
 
