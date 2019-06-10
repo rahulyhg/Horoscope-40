@@ -27,6 +27,7 @@ class Forecast : AppCompatActivity() {
 
         tabLayout.setupWithViewPager( viewPager )
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
+
     }
 
     private fun setImage(title: String?) {

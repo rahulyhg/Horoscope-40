@@ -1,102 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
             name="viewModel"
             type="com.kar.horoscope.viewmodels.compatibility.CompatibilityViewModel" />
     </data>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_gravity="center_vertical"
-    android:gravity="center_horizontal"
-    android:id="@+id/compatibility"
-    tools:context="com.kar.horoscope.view.activities.Compatibility">
+    <android.support.v4.widget.NestedScrollView
+        android:fillViewport="true"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/avatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="50dp">
-
-        <LinearLayout
-            android:id="@+id/layout_male"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/male"
-                android:layout_width="77dp"
-                android:layout_height="77dp"
-                android:src="@drawable/male_avatar" />
-
-            <TextView
-                android:id="@+id/gender_male"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Male"
-                android:textSize="16sp"
-                android:textColor="@color/white" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_toRightOf="@+id/layout_male"
-            android:paddingLeft="80dp">
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:id="@+id/compatibility"
+            tools:context="com.kar.horoscope.view.activities.Compatibility">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/female"
-                android:layout_width="77dp"
-                android:layout_height="77dp"
-                android:src="@drawable/female_avatar" />
-
-            <TextView
-                android:id="@+id/gender_female"
+            <RelativeLayout
+                android:id="@+id/avatar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Female"
-                android:textSize="16sp"
-                android:textColor="@color/white" />
+                android:paddingTop="50dp">
+
+                <LinearLayout
+                    android:id="@+id/layout_male"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/male"
+                        android:layout_width="77dp"
+                        android:layout_height="77dp"
+                        android:src="@drawable/male_avatar" />
+
+                    <TextView
+                        android:id="@+id/gender_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Male"
+                        android:textSize="16sp"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_toRightOf="@+id/layout_male"
+                    android:paddingLeft="80dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/female"
+                        android:layout_width="77dp"
+                        android:layout_height="77dp"
+                        android:src="@drawable/female_avatar" />
+
+                    <TextView
+                        android:id="@+id/gender_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Female"
+                        android:textSize="16sp"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_horizontal"
+                android:overScrollMode="never"
+                android:layout_marginStart="15dp" />
+
+            <Button
+                android:id="@+id/goCompatibility"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ShowCompatibility"
+                android:textStyle="italic"
+                android:textSize="18dp"
+                android:textAlignment="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_button"/>
+
         </LinearLayout>
 
-    </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_gravity="center_horizontal"
-        android:overScrollMode="never"
-        android:layout_marginStart="15dp" />
-
-    <Button
-        android:id="@+id/goCompatibility"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ShowCompatibility"
-        android:textStyle="italic"
-        android:textSize="18dp"
-        android:textAlignment="center"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="3dp"
-        android:paddingTop="3dp"
-        android:textColor="@color/white"
-        android:background="@drawable/rounded_button"/>
-
-</LinearLayout>
 
 </layout>
